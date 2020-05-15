@@ -1,4 +1,0 @@
-No_Gesture
-Palm
-Slide
-Thump
