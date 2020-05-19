@@ -24,7 +24,7 @@ def read_data(req_poses):
                         count_im += 1
     print(str(count_classes)  + ' classes')
     print(str(count_im) + ' images')
-    x = np.empty(shape=(count_im, 28, 28, 1))
+    x = np.empty(shape=(count_im, 128, 96, 1))
     y = np.empty(count_im)
 
     count_im = 0
@@ -44,7 +44,7 @@ def read_data(req_poses):
                         im = cv2.imread(path)
                         im = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
                         im = im.astype(dtype="float64")
-                        im = np.reshape(im, (28, 28, 1))
+                        im = np.reshape(im, (128, 96, 1))
                         x[count_im][:][:][:] = im
                         y[count_im] = count_classes
                         count_im += 1

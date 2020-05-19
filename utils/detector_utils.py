@@ -71,6 +71,7 @@ def get_box_image(num_hands_detect, score_thresh, scores, boxes, im_width, im_he
 def draw_fps_on_image(fps, image_np):
     cv2.putText(image_np, fps, (20, 50),
                 cv2.FONT_HERSHEY_SIMPLEX,2, (77, 255, 9), 2)
+
 def draw_pose_on_image(image_np,poses,inferences):
     # print(inferences)
     if  isinstance(inferences,np.ndarray):

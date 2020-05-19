@@ -27,7 +27,7 @@ def worker(input_q, output_q, cropped_output_q, inferences_q, cap_params, frame_
 
     print(">> loading keras model for worker")
     try:
-        model, classification_graph, session = classifier.load_KerasGraph("cnn/models/hand_poses_thump_20.h5")
+        model, classification_graph, session = classifier.load_KerasGraph("cnn/models/hand_poses_new_no_data_aug10.h5")
     except Exception as e:
         print(e)
 
@@ -93,14 +93,14 @@ if __name__ == '__main__':
         '--width',
         dest='width',
         type=int,
-        default=720,# 300
+        default=1280,# 300
         help='Width of the frames in the video stream.')
     parser.add_argument(
         '-ht',
         '--height',
         dest='height',
         type=int,
-        default=1280, #200
+        default=720, #200
         help='Height of the frames in the video stream.')
     parser.add_argument(
         '-ds',
@@ -181,7 +181,7 @@ if __name__ == '__main__':
         index += 1
 
         input_q.put(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
-        print("frame size1" , frame.shape)
+        # print("frame size1" , frame.shape)
 
 
         output_frame = output_q.get()

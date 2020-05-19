@@ -19,8 +19,8 @@ for pose in poses:
                 im = cv2.imread(path)
 
                 height, width, channels = im.shape
-                if not height == width == 28:
+                if  height !=96 or width != 128:
                     # Resize image
-                    im = cv2.resize(im, (28, 28), interpolation=cv2.INTER_AREA)
+                    im = cv2.resize(im, (128, 96), interpolation=cv2.INTER_AREA)
                     # Write image
                     cv2.imwrite(path, im)

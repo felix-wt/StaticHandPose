@@ -15,12 +15,12 @@ import buildPosesDataset as dataset
 
 def train():
     batch_size = 128
-    epochs = 20
+    epochs = 30
     learning_rate = 0.01
-    model_name = "cnn/models/hand_poses_thump_" + str(epochs) + ".h5"
+    model_name = "cnn/models/hand_poses_new_no_data_aug" + str(epochs) + ".h5"
 
     # input image dimensions
-    img_rows, img_cols = 28, 28
+    img_rows, img_cols = 128, 96
 
     # the data, shuffled and split between train and test sets
     x_train, y_train, x_test, y_test = dataset.load_data(poses=["all"])
@@ -48,24 +48,27 @@ def train():
     #model building
     model = Sequential()
     #convolutional layer with rectified linear unit activation
-    model.add(Conv2D(32, kernel_size=(3, 3),
+    model.add(Conv2D(32, kernel_size=(5, 5),
                     activation='relu',
                     input_shape=input_shape))
     # 32 convolution filters used each of size 3x3
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    model.add(Dropout(0.2))
     # again
-    model.add(Conv2D(64, (3, 3), activation='relu'))
+    model.add(Conv2D(32, (3, 3), activation='relu'))
     # 64 convolution filters used each of size 3x3
     # model.add(Conv2D(64, (3, 3), activation='relu',padding='SAME'))
     # choose the best features via pooling
     model.add(MaxPooling2D(pool_size=(2, 2)))
     # randomly turn neurons on and off to improve convergence
-    model.add(Dropout(0.25))
+    model.add(Dropout(0.20))
     # flatten since too many dimensions, we only want a classification output
     model.add(Flatten())
     # fully connected to get all relevant data
     model.add(Dense(128, activation='relu'))
     # one more dropout for convergence' sake :) 
-    model.add(Dropout(0.5))
+    model.add(Dropout(0.2))
+    model.add(Dense(64, activation='relu'))
     # output a softmax to squash the matrix into output probabilities
     model.add(Dense(num_classes, activation='softmax'))
     # categorical ce since we have multiple classes (10)

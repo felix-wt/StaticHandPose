@@ -89,16 +89,18 @@ def main():
 
     # Begin capturing
     cap = cv2.VideoCapture(0)
-
+    cap.set(3,1280)
+    cap.set(4,720)
     # Define the codec and create VideoWriter object
     fourcc = cv2.VideoWriter_fourcc(*'XVID')
-    out = cv2.VideoWriter(currentPath + name_pose + '.avi', fourcc, 25.0, (640, 480))
+    out = cv2.VideoWriter(currentPath + name_pose + '.avi', fourcc, 25.0, (1280, 720))
 
     while cap.isOpened():
         # res = input()
         # if res == 'q':
         #     break
         ret, frame = cap.read()
+        # print(frame.shape)
         if ret:
             # write the frame
             out.write(frame)
@@ -134,7 +136,7 @@ def main():
         if ret:
             print('   Processing frame: ' + str(_iter))
             # Resize and convert to RGB for NN to work with
-            frame = cv2.resize(frame, (320, 180), interpolation=cv2.INTER_AREA)
+            frame = cv2.resize(frame, (1280, 720), interpolation=cv2.INTER_AREA)
 
             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
@@ -142,7 +144,7 @@ def main():
             boxes, scores = detector_utils.detect_objects(frame, detection_graph, sess)
 
             # get region of interest
-            res = detector_utils.get_box_image(1, 0.2, scores, boxes, 320, 180, frame)
+            res = detector_utils.get_box_image(1, 0.2, scores, boxes, 1280, 720, frame)
 
             # Save cropped image 
             if(res is not None):       

@@ -1,4 +1,4 @@
 No_Gesture
 Palm
-Slide
-Thump
+scissor
+Thump_up
