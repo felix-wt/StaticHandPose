@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9781ab68-db5d-4591-b1ac-e39d94ce85a9" name="Default Changelist" comment="" />
+    <list default="true" id="9d988689-5bae-4474-8369-012bead39fcd" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +16,7 @@
     </option>
   </component>
   <component name="ProjectId" id="1aZEYoIIBZp9jCXCei4nyDg6yES" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="E:/Google_Download/rnn_lstm_gesture_recog-master" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
